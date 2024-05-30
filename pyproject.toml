@@ -1,0 +1,86 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "budget"
+dynamic = ["version"]
+description = "Import budget data to Google Sheets"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Markis Taylor", email = "m@rkis.net" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+  "gspread>=6.1.2",
+]
+[project.urls]
+Documentation = "https://github.com/markis/budget#readme"
+Issues = "https://github.com/markis/budget/issues"
+Source = "https://github.com/markis/budget"
+
+[project.scripts]
+budget-import = "budget.cli:run"
+budget-importer = "budget.cli:run"
+
+[tool.hatch.version]
+path = "budget/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy {args:budget tests}"
+
+[tool.coverage.run]
+source_pkgs = ["budget", "tests"]
+branch = true
+parallel = true
+omit = [
+  "budget/__about__.py",
+]
+
+[tool.coverage.paths]
+budget = ["budget"]
+tests = ["tests"]
+
+[tool.coverage.report]
+exclude_also = [
+  "def __repr__",
+  "if self.debug:",
+  "if settings.DEBUG",
+  "raise AssertionError",
+  "raise NotImplementedError",
+  "assert_never",
+  "if 0:",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+  "class .*\\bProtocol\\):",
+  "@(abc\\.)?abstractmethod",
+]
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+  "A", "ARG", "B", "BLE", "C4", "C90", "COM818", "DTZ", "EM", "ERA", "EXE", "E", "FA", "FBT", "F",
+  "FIX", "G", "I", "ICN", "INP", "INT", "I", "ISC", "PGH", "PIE", "PL", "PTH", "PYI", "PT", "Q",
+  "RET", "RSE", "RUF", "SIM", "SLOT", "SLF", "T10", "T20", "TD", "TRY", "TCH", "UP", "W", "YTT"
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = ["ARG", "PLR0913", "S"]
