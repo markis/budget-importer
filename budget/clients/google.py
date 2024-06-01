@@ -26,7 +26,6 @@ def convert_to_row(tran: SimpleFinTransaction) -> GoogleSheetRow:
         tran.transacted_at.strftime("%-m/%-d/%Y"),
         tran.category or "",
         str(tran.receipt) if tran.receipt else "",
-        tran.transacted_at.strftime("%Y-%m"),
     ]
 
 
