@@ -1,0 +1,9 @@
+/.env
+/.envrc
+/build
+/.vscode
+
+ignore*
+
+/config.yaml
+/credentials.json

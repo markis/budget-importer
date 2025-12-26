@@ -1,0 +1,21 @@
+# Budget Importer Configuration
+# Copy this file to config.yaml and fill in your values.
+
+simplefin:
+  # Url for simplefin (https://beta-bridge.simplefin.org/simplefin)
+  access_url: "https://beta-bridge.simplefin.org/simplefin"
+  username: "your-username"
+  password: "your-password"
+
+google:
+  # Path to Google service account credentials JSON file
+  credentials: "/path/to/service-account.json"
+
+  # Google Sheets spreadsheet ID (from the URL)
+  spreadsheet_id: "your-spreadsheet-id"
+
+  # Sheet name for transactions (default: "transactions")
+  sheet_name: "transactions"
+
+  # Sheet name for category mappings (default: "lookup")
+  mapping_sheet: "lookup"

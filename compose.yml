@@ -1,0 +1,10 @@
+services:
+  budget-importer:
+    image: markis/budget-importer:latest
+    container_name: budget-importer
+    build:
+      context: .
+      dockerfile: Containerfile
+    volumes:
+      - ./credentials.json:/credentials.json:ro
+      - ./config.yaml:/config.yaml:ro
